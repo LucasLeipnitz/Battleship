@@ -10,11 +10,12 @@ using System.Windows.Forms;
 
 namespace Battleship
 {
-    public partial class Form1 : Form
+    public partial class Interface : Form
     {
-        public Form1()
+        public Interface()
         {
             InitializeComponent();
+            InitializeTable();
         }
     }
 }
