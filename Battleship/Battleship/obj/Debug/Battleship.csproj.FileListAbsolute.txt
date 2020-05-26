@@ -7,3 +7,4 @@ C:\Users\Lucas\source\repos\Battleship\Battleship\Battleship\obj\Debug\Battleshi
 C:\Users\Lucas\source\repos\Battleship\Battleship\Battleship\obj\Debug\Battleship.csproj.CoreCompileInputs.cache
 C:\Users\Lucas\source\repos\Battleship\Battleship\Battleship\obj\Debug\Battleship.exe
 C:\Users\Lucas\source\repos\Battleship\Battleship\Battleship\obj\Debug\Battleship.pdb
+C:\Users\Lucas\source\repos\Battleship\Battleship\Battleship\obj\Debug\Battleship.Interface.resources
