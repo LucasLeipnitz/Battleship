@@ -6,22 +6,30 @@ using System.Threading.Tasks;
 
 namespace Battleship
 {
-    class Mapping{
+    public class Mapping{
 
         private bool[,] isShip = new bool[16, 16];
+        private int tableSize;
 
-        public Mapping(bool[,] generatedMap){
+        public Mapping(bool[,] generatedMap, int tableSize){
             isShip = generatedMap;
+            this.tableSize = tableSize;
         }
 
-        private bool Hit => true;
-        private bool Miss => false;
+        private int Invalid => 2;
+        private int Hit => 1;
+        private int Miss => 0;
 
-        public bool LaunchCheck(int xcoordinates, int ycoordinates){
-            if (isShip[xcoordinates, ycoordinates]){
-                return Hit;
+        public int LaunchCheck(int xcoordinates, int ycoordinates){
+            if (xcoordinates >= tableSize || ycoordinates >= tableSize){
+                return Invalid;
             }else{
-                return Miss;
+                if (isShip[xcoordinates, ycoordinates]){
+                    return Hit;
+                }
+                else{
+                    return Miss;
+                }
             }
         }
 
