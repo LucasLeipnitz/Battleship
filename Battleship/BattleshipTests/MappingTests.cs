@@ -10,38 +10,41 @@ namespace BattleshipTests
         public void TestMethod1()
         {
             // Arrange
-            bool[,] isShip = new bool[16, 16];
-            for(int i = 0; i < 16; i++){
-                for (int j = 0; j < 16; j++){
-                    isShip[i, j] = false;
-                }
-            }
-            isShip[1, 7] = true;
-            isShip[1, 8] = true;
-            isShip[1, 9] = true;
-            isShip[12, 3] = true;
-            isShip[13, 3] = true;
-            isShip[14, 3] = true;
-            isShip[8, 11] = true;
-            isShip[8, 12] = true;
-            isShip[8, 13] = true;
-            Mapping map = new Mapping(isShip,16);
+            Mapping map = Battleship.MapGenerator.MapGenerate1();
 
             // Assert
-            // Miss
-            Assert.AreEqual(0, map.LaunchCheck(0, 0));
-            Assert.AreEqual(0, map.LaunchCheck(0, 5));
-            Assert.AreEqual(0, map.LaunchCheck(0, 13));
-
-            // Hit
-            Assert.AreEqual(1, map.LaunchCheck(1, 8));
-
             // Invalid
             Assert.AreEqual(2, map.LaunchCheck(0, 16));
             Assert.AreEqual(2, map.LaunchCheck(16, 0));
             Assert.AreEqual(2, map.LaunchCheck(3185, 250));
+            Assert.AreEqual(2, map.LaunchCheck(-5, 0));
+            Assert.AreEqual(2, map.LaunchCheck(0, -5)); ;
+            Assert.AreEqual(2, map.LaunchCheck(-1, -2));
+            //Check remaing ships with invalid shots
+            Assert.AreEqual(9, map.GetRemainingShips());
 
+            // Miss
+            Assert.AreEqual(0, map.LaunchCheck(0, 0));
+            Assert.AreEqual(0, map.LaunchCheck(0, 5));
+            Assert.AreEqual(0, map.LaunchCheck(0, 13));
+            Assert.AreEqual(0, map.LaunchCheck(7, 9));
+            Assert.AreEqual(0, map.LaunchCheck(11, 15));
+            //Check remaing ships with miss shots
+            Assert.AreEqual(9, map.GetRemainingShips());
 
+            // Hit
+            Assert.AreEqual(1, map.LaunchCheck(1, 8));
+            Assert.AreEqual(1, map.LaunchCheck(1, 9));
+            Assert.AreEqual(1, map.LaunchCheck(12, 3));
+            Assert.AreEqual(1, map.LaunchCheck(1, 8));//Repated
+            Assert.AreEqual(1, map.LaunchCheck(8, 13));
+            Assert.AreEqual(1, map.LaunchCheck(1, 8));//Repeated
+            Assert.AreEqual(1, map.LaunchCheck(12, 3));//Repeated
+            Assert.AreEqual(1, map.LaunchCheck(1, 8));//Repeated
+            Assert.AreEqual(1, map.LaunchCheck(13, 3));
+            Assert.AreEqual(1, map.LaunchCheck(1, 9));//Repeated
+            //Check remaing ships with 5 repeated hits
+            Assert.AreEqual(4, map.GetRemainingShips());
         }
     }
 }

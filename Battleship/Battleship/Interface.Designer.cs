@@ -95,6 +95,7 @@ namespace Battleship
             this.launchButton.TabIndex = 5;
             this.launchButton.Text = "Launch";
             this.launchButton.UseVisualStyleBackColor = true;
+            this.launchButton.Click += new System.EventHandler(this.launchButton_Click);
             // 
             // Interface
             // 
